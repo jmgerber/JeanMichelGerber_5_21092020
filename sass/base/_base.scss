@@ -1,0 +1,27 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    color: #171717;
+}
+
+body, ul, p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h1{
+    font-weight: inherit;
+    font-family: 'Modak', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.main{
+    padding: 30px;
+}

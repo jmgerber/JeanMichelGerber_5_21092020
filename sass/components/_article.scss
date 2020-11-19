@@ -1,0 +1,22 @@
+.item{
+    border-radius: 1.5em;
+    margin-bottom: 20px;
+    background-color: $primary-color;
+    overflow: hidden;
+    border: 2px solid rgb(149, 6, 245);
+    img{
+        width: 100%;
+    }
+    .infos{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__price{
+        font-weight: 500;
+        font-size: 1.1rem;
+    }
+    &__text{
+        padding: 15px;
+    }
+}
