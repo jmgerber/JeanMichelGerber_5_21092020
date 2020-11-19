@@ -1,0 +1,19 @@
+header{
+    padding: 5px 15px;
+    background-color: $primary-color;
+    ul{
+        display: flex;
+        align-items: center;
+        .link-cart{
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .logo{
+            flex: 1;
+        }
+    }
+    img{
+        width: 50%;
+        max-width: 200px;
+    }
+}

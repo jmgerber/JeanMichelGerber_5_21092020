@@ -7,10 +7,14 @@ let products = document.getElementById('products');
                     newArticle.classList.add('item');
                     newArticle.innerHTML =
                     '<a href="">' +
-                    '<div class="items__img"><img src=\"' + dataList[content].imageUrl + '\" /></div>' +
-                    '<h2>Nom : ' + dataList[content].name + '</h2>' +
-                    '<p class="items__price">Prix : ' + (dataList[content].price/100) + '€</p>' +
-                    '<p class="items__description">' + dataList[content].description + '</p>'+
+                        '<div class="item__img"><img src=\"' + dataList[content].imageUrl + '\" /></div>' +
+                        '<div class="item__text">' +
+                            '<div class="infos">' +
+                                '<h2>' + dataList[content].name + '</h2>' +
+                                '<p class="item__price">' + (dataList[content].price/100) + '€</p>' +
+                            '</div>' +
+                            '<p class="item__description">' + dataList[content].description + '</p>'+
+                        '</div>' +
                     '</a>';
 
                     products.appendChild(newArticle);
