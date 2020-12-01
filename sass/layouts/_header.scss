@@ -1,7 +1,12 @@
 header{
+    box-sizing: border-box;
+    height: 80px;
     padding: 5px 15px;
     color: white;
     background-color: $primary-color;
+    nav, ul{
+        height: 100%;
+    }
     ul{
         display: flex;
         align-items: center;
@@ -16,5 +21,14 @@ header{
     img{
         width: 50%;
         max-width: 200px;
+    }
+}
+
+// Header de la page Panier
+.header-cart{
+    text-align: center;
+    img{
+        width: inherit;
+        height: 100%;
     }
 }
