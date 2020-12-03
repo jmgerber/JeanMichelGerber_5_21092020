@@ -1,4 +1,4 @@
-let products = document.getElementById('products');
+let productsList = document.getElementById('products');
 let product = document.getElementById('product');
 let cart = document.getElementById("cart");
 
@@ -18,9 +18,30 @@ const getProducts = async () => {
 };
 getProducts();
 
+const postProduct = async () => {
+    try {
+        let response = await fetch('http://localhost:3000/api/cameras/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: stringifyPost()
+        });
+        if (response.ok){
+            let responseData = await response.json()
+            console.log(responseData);
+        } else {
+            console.log('Retour du serveur : ' + response.status);
+        }
+    } catch (e){
+        console.error(e);
+    }
+};
+
+// Créer la liste en fonction de la page
 const createBloc = (dataList) => {
     try {
-        if (products){
+        if (productsList){
             createProductsList(dataList);
         }
         else if (product){
@@ -55,6 +76,6 @@ function createProductsList(dataList){
                 '<p class="items__description">' + dataList[content].description + '</p>'+
             '</div>' +
         '</a>';
-        products.appendChild(newArticle);
+        productsList.appendChild(newArticle);
     }
 };

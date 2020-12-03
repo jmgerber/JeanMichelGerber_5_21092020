@@ -49,8 +49,6 @@ function createCartList(dataList){
 };
 
 
-
-
 function cartManagement(){
     let addCartButton = document.getElementById('add-cart');
     let deleteCartButton = document.querySelectorAll('.delete-cart');
@@ -102,3 +100,86 @@ function deleteFromCart(){
     }
     getProducts();
 };
+
+
+let submitButton = document.getElementById('cart-validation-btn');
+
+submitButton.addEventListener('click', function(e){
+    e.preventDefault();
+    let lastName = document.getElementById('last-name').value;
+    let firstName = document.getElementById('first-name').value;
+    let address = document.getElementById('address').value;
+    let city = document.getElementById('city').value;
+    let email = document.getElementById('email').value;
+    if (formControl(lastName, firstName, address, city, email)){
+        console.log('Tout est bon');
+        let contact = {
+            firstName: firstName,
+            lastName: lastName,
+            address: address,
+            city: city,
+            email: email
+        }
+        document.getElementById("cart-form").submit();
+        return contact;
+    }
+});
+
+function stringifyPost(){
+    let firstName = 'Jean';
+    let lastName = 'Dupont';
+    let address = '2 rue des lacs';
+    let city = 'Diefenbach';
+    let email = 'salut@coucou.fr';
+
+    let contact = {
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        city: city,
+        email: email
+    }
+    let products = ['5be1ed3f1c9d44000030b061','5be1ed3f1c9d44000030b061'];
+    return JSON.stringify({contact, products});
+}
+
+function emailIsValid(value) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(value.toLowerCase());
+}
+function textIsValid(value) {
+    const re = /([a-z]){2,}$/i;
+    return re.test(value);
+}
+function addressIsValid(value) {
+    const re = /([0-9]{1,}).{1,}$/i;
+    return re.test(value);
+}
+
+function formControl(lastName, firstName, address, city, email){
+    if(!textIsValid(lastName)){
+        console.log("Le nom est incorrect");
+        return false
+    }
+    else if (!textIsValid(firstName)){
+        console.log("Le prénom est incorrect");
+        return false
+    }
+    else if(!addressIsValid(address)){
+        console.log("L'adresse est incorrecte");
+        return false
+    }
+    else if(!textIsValid(city)){
+        console.log("Le nom de la ville est incorrect");
+        return false
+    }
+    else if(!emailIsValid(email)){
+        console.log("L'email est invalide");
+        return false
+    }
+    else{
+        return true
+    }
+}
+
+
