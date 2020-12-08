@@ -18,26 +18,6 @@ const getProducts = async () => {
 };
 getProducts();
 
-const postProduct = async () => {
-    try {
-        let response = await fetch('http://localhost:3000/api/cameras/order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: stringifyPost()
-        });
-        if (response.ok){
-            let responseData = await response.json()
-            console.log(responseData);
-        } else {
-            console.log('Retour du serveur : ' + response.status);
-        }
-    } catch (e){
-        console.error(e);
-    }
-};
-
 // Créer la liste en fonction de la page
 const createBloc = (dataList) => {
     try {
@@ -49,6 +29,10 @@ const createBloc = (dataList) => {
         }
         else if (cart){
             createCartList(dataList);
+        }
+        else if (orderResume){
+            createOrderResume();
+            createOrderContact();
         }
     } catch (e) {
         console.error(e);

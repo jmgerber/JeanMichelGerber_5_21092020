@@ -1,12 +1,13 @@
 let cartList = localStorage;
-let cartContent = JSON.parse(cartList.getItem('cartContent'));
 let finalPrice = document.getElementById('total-price');
-let cartValidationForm = document.getElementById('cart-form');
+let cartValidationForm = document.querySelector('.cart-form');
+let cartContent = JSON.parse(cartList.getItem('cartContent'));
 
 // Fonction pour afficher la liste du panier
 function createCartList(dataList){
+
     let totalPrice = 0;
-    if (cartContent.length === 0){
+    if (cartContent === null){
         const newParagraph = document.createElement('p');
         newParagraph.innerHTML = '<em>Le panier est vide</em>';
         cart.prepend(newParagraph);
@@ -92,6 +93,7 @@ function deleteFromCart(){
             let pos = i;
             cartContent.splice(pos, 1);
             cartList.setItem("cartContent", JSON.stringify(cartContent));
+            break
         }
     }
     // Actualise les produits du panier
@@ -102,36 +104,48 @@ function deleteFromCart(){
 };
 
 
-let submitButton = document.getElementById('cart-validation-btn');
-
-submitButton.addEventListener('click', function(e){
-    e.preventDefault();
-    let lastName = document.getElementById('last-name').value;
-    let firstName = document.getElementById('first-name').value;
-    let address = document.getElementById('address').value;
-    let city = document.getElementById('city').value;
-    let email = document.getElementById('email').value;
-    if (formControl(lastName, firstName, address, city, email)){
-        console.log('Tout est bon');
-        let contact = {
-            firstName: firstName,
-            lastName: lastName,
-            address: address,
-            city: city,
-            email: email
+const postProduct = async (data) => {
+    try {
+        let response = await fetch('http://localhost:3000/api/cameras/order', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data
+        });
+        if (response.ok){
+            responseData = response.json();
+            return responseData
+        } else {
+            console.error('Problème du serveur : ' + response.status);
         }
-        document.getElementById("cart-form").submit();
-        return contact;
     }
-});
+    catch (e){
+        console.error(e);
+    }
+};
 
-function stringifyPost(){
-    let firstName = 'Jean';
-    let lastName = 'Dupont';
-    let address = '2 rue des lacs';
-    let city = 'Diefenbach';
-    let email = 'salut@coucou.fr';
+let submitButton = document.getElementById('cart-validation-btn');
+if (submitButton){
+    submitButton.addEventListener('click', function(){
+        let lastName = document.getElementById('last-name').value;
+        let firstName = document.getElementById('first-name').value;
+        let address = document.getElementById('address').value;
+        let city = document.getElementById('city').value;
+        let email = document.getElementById('email').value;
+        if (formControl(lastName, firstName, address, city, email)){
+            let data = newContact(lastName, firstName, address, city, email);
+            console.log(data);
+            postProduct(data).then((value) => {
+                cartList.setItem('order', JSON.stringify(value));
+                cartList.removeItem('cartContent');
+                window.location.assign(window.location.origin + '/confirmation.html');
+            });
+        }
+    });
+}
 
+function newContact(lastName, firstName, address, city, email){
     let contact = {
         firstName: firstName,
         lastName: lastName,
@@ -139,10 +153,20 @@ function stringifyPost(){
         city: city,
         email: email
     }
-    let products = ['5be1ed3f1c9d44000030b061','5be1ed3f1c9d44000030b061'];
+    return stringifyPost(contact);
+}
+
+function stringifyPost(contact){
+    let products = [];
+    cartContent = JSON.parse(cartList.cartContent);
+    for (let i = 0; i < cartContent.length; i++){
+        products.push(cartContent[i].id);
+    }
     return JSON.stringify({contact, products});
 }
 
+
+// Expressions REGEX
 function emailIsValid(value) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(value.toLowerCase());
@@ -181,5 +205,3 @@ function formControl(lastName, firstName, address, city, email){
         return true
     }
 }
-
-

@@ -9,7 +9,7 @@
 }
 
 .form-hide{
-    display: none;
+    display: none !important;
 }
 
 .btn-container{
@@ -27,7 +27,7 @@
     height: auto;
 }
 
-form{
+.cart-form{
     display: flex;
     flex-direction: column;
     align-items: center;
