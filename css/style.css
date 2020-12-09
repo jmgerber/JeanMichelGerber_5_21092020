@@ -55,9 +55,6 @@ h1 {
 .items__text {
   padding: 0 25px 25px 25px;
 }
-.items__description {
-  text-align: justify;
-}
 
 .item {
   overflow: hidden;
@@ -82,7 +79,6 @@ h1 {
   padding: 0 20px 15px;
 }
 .item__description {
-  text-align: justify;
   margin-bottom: 15px;
 }
 .item #add-cart {
@@ -92,7 +88,7 @@ h1 {
   text-align: center;
   cursor: pointer;
   font-weight: 500;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .item #add-cart i {
   font-size: 1.5rem;
@@ -208,6 +204,7 @@ header img {
 }
 
 #cart-validation-btn {
+  cursor: pointer;
   background-color: #222222;
   color: #fff;
   font-weight: 600;
@@ -236,6 +233,11 @@ header img {
   font-size: 1rem;
   padding-left: 5px;
 }
+.cart-form .error-message {
+  color: #d43d3d;
+  text-align: center;
+  font-weight: 500;
+}
 
 #order {
   padding: 15px;
@@ -249,19 +251,25 @@ header img {
   font-weight: 500;
 }
 
+.order__resume {
+  box-sizing: border-box;
+  padding: 15px 5px;
+  background-color: whitesmoke;
+  box-shadow: 0 0 8px 1px #e1e1e1;
+}
+
 #order-id {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 300;
 }
-#order-id .order-id-text {
-  font-weight: 600;
+#order-id #order-id-text {
+  font-weight: 500;
 }
 
 #order-products {
   margin: auto;
-  margin-bottom: 20px;
   width: 75%;
 }
 #order-products .product-row {
@@ -283,6 +291,7 @@ header img {
 }
 
 #order__address {
+  margin-top: 20px;
   text-align: center;
 }
 #order__address p {

@@ -1,4 +1,3 @@
-let cartList = localStorage;
 let finalPrice = document.getElementById('total-price');
 let cartValidationForm = document.querySelector('.cart-form');
 let cartContent = JSON.parse(cartList.getItem('cartContent'));
@@ -7,7 +6,7 @@ let cartContent = JSON.parse(cartList.getItem('cartContent'));
 function createCartList(dataList){
 
     let totalPrice = 0;
-    if (cartContent === null){
+    if (cartContent === null || cartContent.length === 0){
         const newParagraph = document.createElement('p');
         newParagraph.innerHTML = '<em>Le panier est vide</em>';
         cart.prepend(newParagraph);
@@ -75,8 +74,6 @@ function addToCart(){
         id : productID,
         lens : lensChoice
     };
-
-    console.log('Ajouté au panier');
     cartContent.push(newProduct);
     cartList.setItem("cartContent", JSON.stringify(cartContent));
 
@@ -104,27 +101,6 @@ function deleteFromCart(){
 };
 
 
-const postProduct = async (data) => {
-    try {
-        let response = await fetch('http://localhost:3000/api/cameras/order', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: data
-        });
-        if (response.ok){
-            responseData = response.json();
-            return responseData
-        } else {
-            console.error('Problème du serveur : ' + response.status);
-        }
-    }
-    catch (e){
-        console.error(e);
-    }
-};
-
 let submitButton = document.getElementById('cart-validation-btn');
 if (submitButton){
     submitButton.addEventListener('click', function(){
@@ -135,7 +111,6 @@ if (submitButton){
         let email = document.getElementById('email').value;
         if (formControl(lastName, firstName, address, city, email)){
             let data = newContact(lastName, firstName, address, city, email);
-            console.log(data);
             postProduct(data).then((value) => {
                 cartList.setItem('order', JSON.stringify(value));
                 cartList.removeItem('cartContent');
@@ -163,45 +138,4 @@ function stringifyPost(contact){
         products.push(cartContent[i].id);
     }
     return JSON.stringify({contact, products});
-}
-
-
-// Expressions REGEX
-function emailIsValid(value) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(value.toLowerCase());
-}
-function textIsValid(value) {
-    const re = /([a-z]){2,}$/i;
-    return re.test(value);
-}
-function addressIsValid(value) {
-    const re = /([0-9]{1,}).{1,}$/i;
-    return re.test(value);
-}
-
-function formControl(lastName, firstName, address, city, email){
-    if(!textIsValid(lastName)){
-        console.log("Le nom est incorrect");
-        return false
-    }
-    else if (!textIsValid(firstName)){
-        console.log("Le prénom est incorrect");
-        return false
-    }
-    else if(!addressIsValid(address)){
-        console.log("L'adresse est incorrecte");
-        return false
-    }
-    else if(!textIsValid(city)){
-        console.log("Le nom de la ville est incorrect");
-        return false
-    }
-    else if(!emailIsValid(email)){
-        console.log("L'email est invalide");
-        return false
-    }
-    else{
-        return true
-    }
 }

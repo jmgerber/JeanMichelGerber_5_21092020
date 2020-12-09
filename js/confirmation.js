@@ -1,13 +1,10 @@
-let orderIdDiv = document.getElementById('order-id');
-let orderResume = document.getElementById('order-products');
-let orderContactResume = document.getElementById('order__address');
-
 function createOrderResume(){
     if(orderResume){
+        let orderIdSpan = document.getElementById('order-id-text');
         let orderProducts = JSON.parse(cartList.getItem('order')).products;
         let orderID = JSON.parse(cartList.getItem('order')).orderId;
         let finalPrice = 0;
-        orderIdDiv.innerHTML = 'ID de la commande : <br/ >' + '<span class="order-id-text">' + orderID + '</span>';
+        orderIdSpan.innerText = orderID;
 
         for (let nb in orderProducts) {
             const resume = document.createElement('div');
@@ -26,20 +23,21 @@ function createOrderResume(){
         '<div>Prix total</div>' +
         '<div>' + finalPrice + '€</div>';
         orderResume.appendChild(totalPrice);
+
+        createOrderContact();
     }
 }
 
 
 function createOrderContact(){
-    if(orderContactResume){
-        let orderContact = JSON.parse(cartList.getItem('order')).contact;
-        console.log(orderContact);
-        const contactInfos = document.createElement('div');
-        contactInfos.classList.add('deliver-address');
-        contactInfos.innerHTML =
-        orderContact.lastName + ' ' + orderContact.firstName + '<br />' +
-        orderContact.address + '<br />' +
-        orderContact.city;
-        orderContactResume.appendChild(contactInfos);
-    }
+    let orderContact = JSON.parse(cartList.getItem('order')).contact;
+    const contactInfos = document.createElement('div');
+    contactInfos.classList.add('deliver-address');
+
+    contactInfos.innerHTML =
+    orderContact.lastName + ' ' + orderContact.firstName + '<br />' +
+    orderContact.address + '<br />' +
+    orderContact.city;
+    
+    orderContactResume.appendChild(contactInfos);
 }

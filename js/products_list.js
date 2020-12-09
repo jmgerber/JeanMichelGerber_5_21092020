@@ -1,44 +1,3 @@
-let productsList = document.getElementById('products');
-let product = document.getElementById('product');
-let cart = document.getElementById("cart");
-
-// Se connecte à l'API pour récupérer les données
-const getProducts = async () => {
-    try {
-        let response = await fetch('http://localhost:3000/api/cameras');
-        if (response.ok){
-            let dataList = await response.json();
-            createBloc(dataList);
-        } else {
-            console.log('Retour du serveur : ' + response.status);
-        }
-    } catch (e) {
-        console.error(e);
-    }
-};
-getProducts();
-
-// Créer la liste en fonction de la page
-const createBloc = (dataList) => {
-    try {
-        if (productsList){
-            createProductsList(dataList);
-        }
-        else if (product){
-            createProductCard(dataList);
-        }
-        else if (cart){
-            createCartList(dataList);
-        }
-        else if (orderResume){
-            createOrderResume();
-            createOrderContact();
-        }
-    } catch (e) {
-        console.error(e);
-    }
-};
-
 // Fonction pour créer la liste des produits
 function createProductsList(dataList){
     for (let content in dataList){ 
@@ -51,7 +10,7 @@ function createProductsList(dataList){
         newArticle.classList.add('items');
         newArticle.innerHTML =
         '<a href="produit.html?' + urlAddID + '">' +
-            '<div class="items__img"><img src=\"' + dataList[content].imageUrl + '\" /></div>' +
+            '<div class="items__img"><img src=\"' + dataList[content].imageUrl + '\" alt=\"Photo d\'un appareil '+ dataList[content].name + '\"/></div>' +
             '<div class="items__text">' +
                 '<div class="items-name-price">' +
                     '<h2>' + dataList[content].name + '</h2>' +
