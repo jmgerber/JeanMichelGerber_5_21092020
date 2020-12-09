@@ -15,7 +15,7 @@ function createProductCard(dataList){
             }
             
             productCard.innerHTML =
-            '<div class="item__img"><img src=\"' + dataList[content].imageUrl + '\" /></div>' +
+            '<div class="item__img"><img src=\"' + dataList[content].imageUrl + '\" alt=\"Photo d\'un appareil '+ dataList[content].name + '\"/></div>' +
             '<div class="item__infos">' +
                 '<div class="item__text">' +
                     '<div class="item-name-price">' +

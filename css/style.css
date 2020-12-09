@@ -55,9 +55,6 @@ h1 {
 .items__text {
   padding: 0 25px 25px 25px;
 }
-.items__description {
-  text-align: justify;
-}
 
 .item {
   overflow: hidden;
@@ -82,7 +79,6 @@ h1 {
   padding: 0 20px 15px;
 }
 .item__description {
-  text-align: justify;
   margin-bottom: 15px;
 }
 .item #add-cart {
@@ -92,7 +88,7 @@ h1 {
   text-align: center;
   cursor: pointer;
   font-weight: 500;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .item #add-cart i {
   font-size: 1.5rem;
@@ -200,7 +196,7 @@ header img {
 }
 
 .form-hide {
-  display: none;
+  display: none !important;
 }
 
 .btn-container {
@@ -208,6 +204,7 @@ header img {
 }
 
 #cart-validation-btn {
+  cursor: pointer;
   background-color: #222222;
   color: #fff;
   font-weight: 600;
@@ -218,23 +215,103 @@ header img {
   height: auto;
 }
 
-form {
+.cart-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-form label {
+.cart-form label {
   display: block;
   text-align: center;
   font-weight: 500;
   margin: 8px 0;
 }
-form input {
+.cart-form input {
   height: 28px;
   width: 250px;
   border: 1px solid #b4b0b0;
   font-size: 1rem;
   padding-left: 5px;
+}
+.cart-form .error-message {
+  color: #d43d3d;
+  text-align: center;
+  font-weight: 500;
+}
+
+#order {
+  padding: 15px;
+}
+#order h1 {
+  text-align: center;
+}
+#order h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.order__resume {
+  box-sizing: border-box;
+  padding: 15px 5px;
+  background-color: whitesmoke;
+  box-shadow: 0 0 8px 1px #e1e1e1;
+}
+
+#order-id {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: 300;
+}
+#order-id #order-id-text {
+  font-weight: 500;
+}
+
+#order-products {
+  margin: auto;
+  width: 75%;
+}
+#order-products .product-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #c9c9c9;
+  padding: 6px 0;
+}
+#order-products .product-row__name {
+  font-weight: 600;
+}
+#order-products .product-row:nth-last-child(-n+2) {
+  border-bottom: 2px solid #c23131;
+}
+#order-products .total-price {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+#order__address {
+  margin-top: 20px;
+  text-align: center;
+}
+#order__address p {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+#order__address .deliver-address {
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.index-link {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+.index-link a {
+  padding: 10px 14px;
+  box-shadow: 0 0 5px 2px #b8b8b8;
 }
 
 /*# sourceMappingURL=style.css.map */
