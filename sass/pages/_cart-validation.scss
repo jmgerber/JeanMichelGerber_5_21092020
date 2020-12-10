@@ -2,6 +2,10 @@
     text-align: end;
     margin: 10px 10px 0;
     font-size: 1.1rem;
+    @media screen and (min-width: 800px){
+        text-align: start;
+        margin: 10px 0 0;
+    }
 }
 
 #total-price{
@@ -49,5 +53,12 @@
         color: rgb(212, 61, 61);
         text-align: center;
         font-weight: 500;
+    }
+    @media screen and (min-width: 1200px){
+        margin: 54px auto;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid black;
+        align-self: baseline;
     }
 }

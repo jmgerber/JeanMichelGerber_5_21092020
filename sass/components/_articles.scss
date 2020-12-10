@@ -7,6 +7,10 @@
     background-color: $primary-color;
     img{
         width: 100%;
+        height: 100%;
+        min-height: 220px;
+        max-height: 500px;
+        object-fit: cover;
     }
     &-name-price{
         display: flex;
@@ -123,5 +127,62 @@
         margin: auto;
         text-align: center;
         cursor: pointer;
+    }
+}
+
+
+@media screen and (min-width: 650px){
+    // Style de la liste des produits -- Tablette
+    #products{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .items{
+        width: 49%;
+    }
+    h2{
+        font-size: 1.3rem !important;
+    }
+}
+
+@media screen and (min-width: 800px){
+    // Style de la liste du panier -- Desktop
+    #cart{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .cart-items{
+        box-sizing: border-box;
+        width: 49%;
+        img{
+            height: 180px;
+            object-fit: cover;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px){
+    // Style de la liste du panier -- Desktop
+    .main-cart{
+        display: flex;
+    }
+    .cart-box{
+        width: 75%;
+        .cart-items{
+            width: 100%;
+        }
+    }
+    // Style d'un seul produit -- Desktop
+    .item{
+        display: flex;
+        &__img{
+            padding: 20px;
+            width: 75%;
+        }
+        &__infos{
+            align-self: center;
+        }
     }
 }
