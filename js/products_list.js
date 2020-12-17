@@ -1,15 +1,11 @@
 // Fonction pour créer la liste des produits
 function createProductsList(dataList){
     for (let content in dataList){ 
-        // Ajoute l'id du produit dans l'URL
-        let urlAddID = new URLSearchParams('id', dataList[content]._id);
-        urlAddID.set('id', dataList[content]._id);
-
-        // Créer chaque produit de la liste
+        // Créé chaque produit de la liste
         const newArticle = document.createElement('article');
         newArticle.classList.add('items');
         newArticle.innerHTML =
-        '<a href="produit.html?' + urlAddID + '">' +
+        '<a href="produit.html?id=' + dataList[content]._id + '">' +
             '<div class="items__img"><img src=\"' + dataList[content].imageUrl + '\" alt=\"Photo d\'un appareil '+ dataList[content].name + '\"/></div>' +
             '<div class="items__text">' +
                 '<div class="items-name-price">' +
@@ -21,4 +17,4 @@ function createProductsList(dataList){
         '</a>';
         productsList.appendChild(newArticle);
     }
-};
+}
