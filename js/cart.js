@@ -14,7 +14,7 @@ class Cart{
                 cartContent = [];
             }
             let lensChoice = document.getElementById('lens-select').value;
-            let productID = new URLSearchParams(document.location.search.substring(1)).get("id");
+            let productID = Utils.getUrlId();
             let newProduct = {
                 id : productID,
                 lens : lensChoice
@@ -128,10 +128,7 @@ function submitOrder(event){
             cartList.setItem('order', JSON.stringify(value));
             cartList.removeItem('cartContent');
             window.location.assign(window.location.origin + '/confirmation.html');
-        })
-        .catch(event.preventDefault());
+        });
     }
-    else{
-        event.preventDefault();
-    }
+    event.preventDefault();
 }

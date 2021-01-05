@@ -12,12 +12,17 @@
     font-weight: 600;
 }
 
+.contact-heading{
+    font-weight: 300;
+    margin: 20px 0 10px;
+}
+
 .btn-container{
     cursor: pointer;
     margin: 25px 0;
     background-color: $primary-color;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.1rem;
     border: none;
     width: 260px;
