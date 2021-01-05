@@ -1,0 +1,62 @@
+#total-price-container{
+    text-align: end;
+    margin: 10px 10px 0;
+    font-size: 1.1rem;
+    @media screen and (min-width: 1000px){
+        font-size: 1.3rem;
+        margin: 10px 0 0;
+    }
+}
+
+#total-price{
+    font-weight: 600;
+}
+
+.contact-heading{
+    font-weight: 300;
+    margin: 20px 0 10px;
+}
+
+.btn-container{
+    cursor: pointer;
+    margin: 25px 0;
+    background-color: $primary-color;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.1rem;
+    border: none;
+    width: 260px;
+    padding: 15px;
+    font-family: "Roboto", sans-serif;
+}
+
+.cart-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    label{
+        display: block;
+        text-align: center;
+        font-weight: 500;
+        margin: 8px 0;
+    }
+    input{
+        height: 28px;
+        width: 250px;
+        border: 1px solid rgb(180, 176, 176);
+        font-size: 1rem;
+        padding-left: 5px;
+    }
+    .error-message{
+        color: rgb(212, 61, 61);
+        text-align: center;
+        font-weight: 500;
+    }
+    @media screen and (min-width: 1000px){
+        margin: 54px auto;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid black;
+        align-self: baseline;
+    }
+}

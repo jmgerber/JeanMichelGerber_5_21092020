@@ -1,0 +1,79 @@
+#order{
+    padding: 15px;
+    h1{
+        text-align: center;
+    }
+    h2{
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: 500;
+    }
+}
+
+.order__resume{
+    box-sizing: border-box;
+    padding: 15px 5px;
+    background-color: rgb(245, 245, 245);
+    box-shadow: 0 0 8px 1px rgb(225, 225, 225);
+    @media screen and (min-width: 1200px){
+        width: 50%;
+        margin: auto;
+    }
+}
+
+#order-id{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-weight: 300;
+    #order-id-text{
+        font-weight: 500;
+    }
+}
+
+#order-products{
+    margin: auto;
+    width: 75%;
+    .product-row{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgb(201, 201, 201);
+        padding: 6px 0;
+        &__name{
+            font-weight: 600;
+        }
+        &:nth-last-child(-n+2){
+            border-bottom: 2px solid rgb(194, 49, 49);
+        }
+    }
+    
+    .total-price{
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+    }
+}
+
+#order__address{
+    margin-top: 20px;
+    text-align: center;
+    p{
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+    .deliver-address{
+        margin-top: 15px;
+        font-weight: 500;
+    }
+}
+
+.index-link{
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    a{
+        padding: 10px 14px;
+        box-shadow: 0 0 5px 2px rgb(184, 184, 184);
+    }
+}

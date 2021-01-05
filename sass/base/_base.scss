@@ -1,0 +1,30 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    color: #171717;
+    background-color: #fdfdfd;
+}
+
+body, ul, p{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h1{
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 300;
+}
+
+.main{
+    padding: 30px;
+}
+
+.main-cart{
+    padding: 10px;
+}
